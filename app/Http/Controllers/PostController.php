@@ -55,4 +55,10 @@ class PostController extends Controller
         return view('posts.edit')->with(['post' => $post]);
         //'post'はbladeファイルで使う変数。中身は$postはid=1のPostインスタンス。
     }
+    
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
+    }
 }
