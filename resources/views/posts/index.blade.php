@@ -15,12 +15,13 @@
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
+                    <div class="edit"><a href="/posts/{{ $post->id }}/edit">編集</a></div>
                 </div>
             @endforeach
         </div>
         <div class = 'pagenate'>
             {{ $posts->links() }}
         </div>
-        <a href='/posts/create'>create</a>
+        <a href='/posts/create'>新規作成</a>
     </body>
 </html>
