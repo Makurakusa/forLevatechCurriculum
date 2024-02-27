@@ -16,6 +16,11 @@
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
                     <div class="edit"><a href="/posts/{{ $post->id }}/edit">編集</a></div>
+                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{ $post->id }})">消去</button>
+                    </form>
                 </div>
             @endforeach
         </div>
@@ -23,5 +28,14 @@
             {{ $posts->links() }}
         </div>
         <a href='/posts/create'>新規作成</a>
+        <script>
+            function deletePost(id) {
+                'use strict'
+        
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </body>
 </html>
